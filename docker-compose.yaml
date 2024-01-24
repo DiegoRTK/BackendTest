@@ -1,0 +1,30 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo
+    container_name: my-mongodb-container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin_password
+      MONGO_INITDB_DATABASE: devdb
+
+  # ticket_service:
+  #   build:
+  #     context: .
+  #     dockerfile: ./BackendTest/Dockerfile
+  #   container_name: ticket-service
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./BackendTest:/home/node/app
+  #   environment:
+  #     DB_PASSWORD: admin_password
+  #     DB_USER: admin
+  #     DB_PORT: 27017
+  #     DB_DATABASE: devdb
+volumes:
+  mongodb-data:
