@@ -10,21 +10,24 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: admin_password
-      MONGO_INITDB_DATABASE: devdb
-
-  # ticket_service:
-  #   build:
-  #     context: .
-  #     dockerfile: ./BackendTest/Dockerfile
-  #   container_name: ticket-service
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./BackendTest:/home/node/app
-  #   environment:
-  #     DB_PASSWORD: admin_password
-  #     DB_USER: admin
-  #     DB_PORT: 27017
-  #     DB_DATABASE: devdb
+    networks:
+      - my-network
+  ticket_service:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: ticket-service
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/app
+    environment:
+      DB_PASSWORD: admin_password
+      DB_USER: admin
+      DB_PORT: 27017
+    networks:
+      - my-network
 volumes:
   mongodb-data:
+networks:
+  my-network:

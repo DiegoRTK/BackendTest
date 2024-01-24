@@ -1,6 +1,6 @@
 // Ejemplo de conexión con mongoose en Node.js
 const mongoose = require('mongoose');
-const mongoURL = 'mongodb://admin:admin_password@localhost:27017/admin';
+const mongoURL = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@mongodb:${process.env.DB_PORT}`;
 
 mongoose.connect(mongoURL, { useNewUrlParser: true, useUnifiedTopology: true });
 
