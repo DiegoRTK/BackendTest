@@ -1,35 +1,30 @@
-# Email JSON Extract Data Service
-
-This Node.js project was developed using [npm](https://www.npmjs.com/) version 10.2.5.
-
-## Installation
-
-1. Clone the repository: [email-attachment](https://github.com/DiegoRTK/email-attachment).
-2. Run `npm install` to install project dependencies.
-
-## Development Server
-
-To initiate the development server, execute `npm run dev`. The service will be exposed at http://localhost:__PORT__/ (Default PORT is 3000). Live reloading is active due to the use of [Nodemon](https://www.npmjs.com/package/nodemon).
-
-## Production Server
-
-To run the production server, execute `npm start`. The service will be exposed at http://localhost:__PORT__/ (Default PORT is 3000).
-
 ## Usage
 
-To utilize this project, follow these steps:
-- Download an email following this [Google guide](https://support.google.com/mail/answer/9261412?hl=en).
-- Attach the EML file using form-data. If you are using a Developer's Platform API like Postman, navigate to Body, then click on the "form-data" radio button. For the key, set it as "email" and upload your EML file.
-- Once everything is set up, you can use __CUSTOM_URL__/email/upload. For example, http://localhost:3000/email/upload/:headers.
-- There's a request URL parameter called `headers`; you can set it to `false` or `true`. If it's set to `true`, headers will be shown; otherwise, they will not.
-- Configure a POST request.
-- No authentication headers are needed.
-- Send the request, and you will receive a JSON with all extracted and formatted data.
+To use this project, follow these steps:
+## 1. Prepare Docker and Docker Compose for orchestrate our backend environment
+
+## 2. Run docker-compose command:
+There's no need to create a local daatabase or download anything else but clone this repository and followed previous step. To pull images, build and run your container, all you will need is run `docker-compose up -d --build` or `docker compose up -d --build`, and magic will show up.
+
+## 3. Configure your URL:
+The default port used for this project is the 3000.
+
+## 4. Discover every endpoint:
+
+## POST:
+You will only need to send in the body the user and the status. User is string and is required, status is an enum (Abierto/Cerrado) and is required. The URL is `BASE_URL`/ticket. Fields like ID, created at and update at will be automatically created.
+
+## PATCH:
+You can send in the body the fields that you want to change, for example:
+
+I am goint to update my name, because I made a mistake with surname's spelling. I only need to specify the new user in the body and use the following URL `BASE_URL`ticket/`_id`. The field _id is generated automatically when you execut POST method.
+
+## DELETE:
+You will only need to specify the id in the following URL `BASE_URL`/ticket/`_id`. If operation successed, you will get 'Ticket eliminado exitosamente', else error message
+
+## GET:
+This method can be used with or without query params. If you need to get all tickets, you will need to use the following URL `URL`/ticket/tickets. In the other hand, if you need to specify your query, then you will need to use the following URL `URL`/ticket/tickets`?user=value`. As you can see, after typing ?, you can send any field that you want to filter.
 
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).
-
-## Acknowledgments
-
-Special thanks to [Designli] for the opportunity to complete this exercise and for providing all the requirements needed.

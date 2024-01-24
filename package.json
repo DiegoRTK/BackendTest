@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DiegoRTK/ticket-service.git"
+    "url": "https://github.com/DiegoRTK/BackendTest.git"
   },
   "keywords": [
     "NODE_TEST"
@@ -18,9 +18,9 @@
   "author": "https://www.linkedin.com/in/alejandro1121se/",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DiegoRTK/ticket-service/issues"
+    "url": "https://github.com/DiegoRTK/BackendTest/issues"
   },
-  "homepage": "https://github.com/DiegoRTK/ticket-service#readme",
+  "homepage": "https://github.com/DiegoRTK/BackendTest#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.18.2",
